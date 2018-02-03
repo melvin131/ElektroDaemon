@@ -9,8 +9,11 @@ module ElektroDaemon
             @headers = {
                 "PRIVATE-TOKEN" => @node.secret_token
             }
-            # puts "Opening connection #{@node.ip}:#{@node.port}"
-            self.class.base_uri "http://#{@node.ip}:#{@node.port}"
+            if @node.https
+                self.class.base_uri "https://#{@node.ip}:#{@node.port}"
+            else
+                self.class.base_uri "http://#{@node.ip}:#{@node.port}"
+            end
         end
 
         def get(path, options = {})

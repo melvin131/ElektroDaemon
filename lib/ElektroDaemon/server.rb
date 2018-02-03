@@ -1,5 +1,6 @@
 module ElektroDaemon
     class Server < Client
+        
         attr_reader :server
 
         def initialize(server)
