@@ -2,8 +2,6 @@ module ElektroDaemon
     class Client
         include HTTParty
 
-        attr_reader :node
-
         def initialize(node)
             @node = node
             @headers = {
@@ -17,7 +15,11 @@ module ElektroDaemon
         end
 
         def get(path, options = {})
-            self.class.get(path, options.merge(headers: @headers))
+            begin
+                self.class.get(path, options.merge(headers: @headers))
+            rescue
+                
+            end
         end
 
         def post(path, options = {})

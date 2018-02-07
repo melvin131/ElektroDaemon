@@ -1,20 +1,16 @@
 module ElektroDaemon
     class Server < Client
         
-        attr_reader :server
-
         def initialize(server)
             super(server.node)
             @server = server
         end
 
         def start
-            # puts "Starting server #{@server.name}."
             post("/server/#{@server.uuid}/start")
         end
 
         def stop
-            # puts "Stopping server #{@server.name}."
             post("/server/#{@server.uuid}/stop")
         end
 
@@ -23,24 +19,12 @@ module ElektroDaemon
         end
 
         def data
-            response = get("/server/#{@server.uuid}")
-
-            if response.success?
-                return response
-            else
-                return nil
-            end
+            get("/server/#{@server.uuid}")
         end
 
         def status
             options = { query: { name: @server.uuid } }
-            response = get("/server/#{@server.uuid}", options)
-
-            if response.success?
-                return response
-            else
-                # puts "#{response}"
-            end
+            get("/server/#{@server.uuid}", options)
         end
 
         def command(command)
@@ -48,13 +32,7 @@ module ElektroDaemon
         end
 
         def log
-            response = get("/server/#{@server.uuid}/log")
-
-            if response.success?
-                return response
-            else
-            # puts "#{response}"
-            end
+            get("/server/#{@server.uuid}/log")
         end
 
         def file_manager

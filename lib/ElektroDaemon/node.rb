@@ -1,8 +1,6 @@
 module ElektroDaemon
     class Node < Client
         
-        attr_reader :node
-
         def initialize(node)
             super(node)
             @node = node
