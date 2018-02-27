@@ -8,8 +8,6 @@ module ElektroDaemon
                 "PRIVATE-TOKEN" => @node.secret_token
             }
 
-            puts @node.https
-
             if @node.https
                 self.class.base_uri "https://#{@node.ip}:#{@node.port}"
             else

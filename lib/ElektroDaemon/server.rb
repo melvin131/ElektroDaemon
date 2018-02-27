@@ -18,13 +18,16 @@ module ElektroDaemon
             post("/server/#{@server.uuid}/kill")
         end
 
+        def restart
+            post("/server/#{@server.uuid}/restart")
+        end
+
         def data
             get("/server/#{@server.uuid}")
         end
 
         def status
-            options = { query: { name: @server.uuid } }
-            get("/server/#{@server.uuid}", options)
+            get("/server/#{@server.uuid}")
         end
 
         def command(command)
@@ -36,11 +39,11 @@ module ElektroDaemon
         end
 
         def file_manager
-            get("/server/#{@server.uuid}/file_manager",  query: { name: @server.uuid })
+            get("/server/#{@server.uuid}/file_manager")
         end
 
         def file_manager_folder(path)
-            get("/server/#{@server.uuid}/file_manager",  query: { name: @server.uuid, path: path })
+            get("/server/#{@server.uuid}/file_manager",  query: { path: path })
         end
     end
 end  
