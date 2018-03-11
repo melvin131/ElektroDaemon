@@ -5,7 +5,15 @@ module ElektroDaemon
             super(node)
             @node = node
         end
+        
+        def data
+            get("/node")
+        end
 
+        def version
+            get("/node/version")
+        end
+    
         def online?
             begin
                 response = get("/")

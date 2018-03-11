@@ -7,43 +7,43 @@ module ElektroDaemon
         end
 
         def start
-            post("/server/#{@server.uuid}/start")
+            post("/servers/#{@server.uuid}/start")
         end
 
         def stop
-            post("/server/#{@server.uuid}/stop")
+            post("/servers/#{@server.uuid}/stop")
         end
 
         def kill
-            post("/server/#{@server.uuid}/kill")
+            post("/servers/#{@server.uuid}/kill")
         end
 
         def restart
-            post("/server/#{@server.uuid}/restart")
+            post("/servers/#{@server.uuid}/restart")
         end
 
         def data
-            get("/server/#{@server.uuid}")
+            get("/servers/#{@server.uuid}")
         end
 
         def status
-            get("/server/#{@server.uuid}")
+            get("/servers/#{@server.uuid}")
         end
 
         def command(command)
-            post("/server/#{@server.uuid}/command", query: { command: command })
+            post("/servers/#{@server.uuid}/command", query: { command: command })
         end
 
         def log
-            get("/server/#{@server.uuid}/log")
+            get("/servers/#{@server.uuid}/log")
         end
 
         def file_manager
-            get("/server/#{@server.uuid}/file_manager")
+            get("/servers/#{@server.uuid}/file_manager")
         end
 
         def file_manager_folder(path)
-            get("/server/#{@server.uuid}/file_manager",  query: { path: path })
+            get("/servers/#{@server.uuid}/file_manager",  query: { path: path })
         end
     end
 end  
