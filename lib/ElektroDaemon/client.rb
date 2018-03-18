@@ -19,12 +19,16 @@ module ElektroDaemon
             begin
                 self.class.get(path, options.merge(headers: @headers))
             rescue
-                
+                return { error: true, message: "Error while contacting the node." }
             end
         end
 
         def post(path, options = {})
-            self.class.post(path, options.merge(headers: @headers))
+            begin
+                self.class.post(path, options.merge(headers: @headers))
+            rescue
+                return { error: true, message: "Error while contacting the node." }
+            end
         end
     end
 end
