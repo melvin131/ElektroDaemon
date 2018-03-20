@@ -38,12 +38,8 @@ module ElektroDaemon
             get("/servers/#{@server.uuid}/log")
         end
 
-        def file_manager
-            get("/servers/#{@server.uuid}/file_manager")
-        end
-
-        def file_manager_folder(path)
-            get("/servers/#{@server.uuid}/file_manager",  query: { path: path })
+        def tree(path)
+            get("/servers/#{@server.uuid}/file_manager", query: { path: path })
         end
     end
 end  
